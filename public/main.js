@@ -15,7 +15,7 @@ form.addEventListener("submit", (e) => {
     const data = { os: choice };
     console.log(count);
 
-    fetch("http://localhost:3000/poll", {
+    fetch("https://online-voting-app.arunsingh01.repl.co/poll", {
       method: "post",
       body: JSON.stringify(data),
       headers: new Headers({
@@ -66,7 +66,7 @@ fetch("http://localhost:3000/poll")
 
     if (chartContainer) {
       // Listen for the event.
-      document.addEventListener("votesAdded", function (e) {
+      document.addEventListener("votesAdded", function(e) {
         document.querySelector(
           "#chartTitle"
         ).textContent = `Total Votes: ${e.detail.totalVotes}`;
@@ -92,7 +92,7 @@ fetch("http://localhost:3000/poll")
 
       var channel = pusher.subscribe("os-poll");
 
-      channel.bind("os-vote", function (data) {
+      channel.bind("os-vote", function(data) {
         dataPoints.forEach((point) => {
           if (point.label == data.os) {
             point.y += data.points;

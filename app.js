@@ -1,6 +1,6 @@
-if (process.env.NODE_ENV !== 'production') {
-  require('dotenv').config();
-}
+// if (process.env.NODE_ENV !== 'production') {
+//   require('dotenv').config();
+// }
 
 const express = require('express');
 const expressLayouts = require('express-ejs-layouts');
@@ -18,7 +18,7 @@ require('./config/passport')(passport);
 // Connect to MongoDB
 mongoose
   .connect(process.env.DATABASE_URL,
-    { useNewUrlParser: true ,useUnifiedTopology: true}
+    { useNewUrlParser: true, useUnifiedTopology: true }
   )
   .then(() => console.log('MongoDB Connected'))
   .catch(err => console.log(err));
@@ -63,6 +63,6 @@ app.use('/', require('./routes/index.js'));
 app.use('/users', require('./routes/users.js'));
 app.use('/poll', require('./routes/poll.js'));
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT;
 
 app.listen(PORT, console.log(`Server running on  ${PORT}`));
